@@ -1,0 +1,9 @@
+<!-- Structural Directives: *ngIf='condition' *ngFor='let i of collection' *ngSwitch='...' -->
+
+<div *ngIf="users.length == 0" class="text-center">
+    <img src="https://cdn.dribbble.com/users/665029/screenshots/16162764/media/3ea69cb1655fba401acc6c4328d38633.gif" alt="No Items">
+    <p>No elements in the database yet!</p>
+</div>
+
+<app-user-card *ngFor="let u of users" [user]="u"></app-user-card>
+<p class="text-center">Count: {{users.length}}</p>
