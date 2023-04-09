@@ -14,6 +14,7 @@ export class UserCardComponent {
     username: '',
     email: '',
     birthdate: new Date(),
-    address: ''
+    address: '',
+    isAdmin: false
   };
 }

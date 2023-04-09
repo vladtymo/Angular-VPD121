@@ -1,7 +1,8 @@
 <!-- One-Way Bindings: interpolation {{property}} -->
 <!-- Pipes: uppercase lowercase date currency percent {{property | pipe}} -->
+<!-- Attribute Directives: [class.name]='condition' -->
 
-<div class="card">
+<div class="card" [class.admin]='user.isAdmin'>
     <p class="title">{{user.username | uppercase}}</p>
     <p>Email: {{user.email | lowercase}}</p>
     <p>Age: {{user.birthdate | date:'mediumDate' | uppercase}}</p>
