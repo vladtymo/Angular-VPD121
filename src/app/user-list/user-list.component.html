@@ -1,9 +1,45 @@
 <!-- Structural Directives: *ngIf='condition' *ngFor='let i of collection' *ngSwitch='...' -->
 
-<div *ngIf="users.length == 0" class="text-center">
+<div *ngIf="users.length == 0; else elseBlock" class="text-center">
     <img src="https://cdn.dribbble.com/users/665029/screenshots/16162764/media/3ea69cb1655fba401acc6c4328d38633.gif" alt="No Items">
     <p>No elements in the database yet!</p>
 </div>
 
-<app-user-card *ngFor="let u of users" [user]="u"></app-user-card>
-<p class="text-center">Count: {{users.length}}</p>
+<!-- Event Binding: (eventName)="code" -->
+<ng-template #elseBlock>
+    <div>
+        <button (click)="sort()">Sort by Username [{{isAscending ? '=>' : '&lt;='}}]</button>
+    </div>
+    <p>* double click on user card to delete</p>
+    <app-user-card *ngFor="let u of users" 
+                    [user]="u"
+                    (dblclick)="removeUser(u)">
+    </app-user-card>
+    <p class="text-center">Count: {{users.length}}</p>
+</ng-template>
+
+<!-- Two-Way Binding: [(ngModel)]="property" -->
+
+<!-- add new user form -->
+<h2>Create New User</h2>
+<div>
+    <label>Username:</label>
+    <input [(ngModel)]="inputUser.username" type="text">
+</div>
+<div>
+    <label>Email:</label>
+    <input [(ngModel)]="inputUser.email" type="email">
+</div>
+<div>
+    <label>Birthdate:</label>
+    <input [(ngModel)]="inputUser.birthdate" type="date">
+</div>
+<div>
+    <label>Address:</label>
+    <input [(ngModel)]="inputUser.address" type="text">
+</div>
+<div>
+    <label>Admin:</label>
+    <input [(ngModel)]="inputUser.isAdmin" type="checkbox">
+</div>
+<button (click)="createUser()">Create</button>
